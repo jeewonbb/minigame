@@ -92,17 +92,47 @@ export function AnalysisGraph(props) {
   );
 
   // console.log(_total);
+
   return (
     <>
-      {_total.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.map((item, index) => (
-            <span key={index}>{item} </span> // 각 항목을 span 태그로 감쌈
-          ))}
-          <br />
-        </div>
-      ))}
-      <span>{props.percent}</span>
+      <div>
+        <p>파워볼</p>
+        {_total.slice(0, 2).map((row, rowIndex) => (
+          <div key={rowIndex} className="bar-graph">
+            <div className="left-label">{rowIndex === 0 ? "홀" : "언"}</div>
+            <div className="bar">
+              {row.map((item, index) => (
+                <span
+                  key={index}
+                  className={index === 0 ? "left" : "right"}
+                  style={{ width: item + "%" }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="right-label">{rowIndex === 0 ? "짝" : "오"}</div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <p>일반볼</p>
+        {_total.slice(2, 4).map((row, rowIndex) => (
+          <div key={rowIndex} className="bar-graph">
+            <div className="left-label">{rowIndex === 0 ? "홀" : "언"}</div>
+            <div className="bar">
+              {row.map((item, index) => (
+                <span key={index} className={index === 0 ? "left" : "right"}>
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="right-label">{rowIndex === 0 ? "짝" : "오"}</div>
+          </div>
+        ))}
+      </div>
+      <strong className="percent">{props.percent}</strong>
     </>
   );
 }

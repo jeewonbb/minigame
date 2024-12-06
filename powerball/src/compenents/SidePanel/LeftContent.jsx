@@ -40,10 +40,9 @@ export function LeftContent() {
         {tabContents[currentTabs.tab1] || <div>기본 내용11</div>}
       </section>
       <section>
-        <p>파워볼</p>
         <TabContent3 />
 
-        <div className="bar-container">
+        <div className="bar-graph">
           <div className="left-label">홀</div>
           <div className="bar">
             <strong className="left" style={{ width: "40%" }}>

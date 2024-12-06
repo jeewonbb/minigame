@@ -61,7 +61,7 @@ export function AnalysisBar() {
   };
 
   return (
-    <ul className="bet-list">
+    <ul className="bar-list">
       <AnalysisGraph list={graphList} />
     </ul>
   );
