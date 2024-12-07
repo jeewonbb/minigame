@@ -1,3 +1,4 @@
+import { TitleHeader } from "./compenents/ui/TitleHeader/TitleHeader";
 import { GamePanel } from "./compenents/GamePanel/GamePanel";
 import { SidePanel } from "./compenents/SidePanel/SidePanel";
 import { LeftContent } from "./compenents/SidePanel/LeftContent";
@@ -7,11 +8,14 @@ import "reset-css";
 
 function App() {
   return (
-    <div className="container">
-      <SidePanel data-position="left" content={<LeftContent />} />
-      <GamePanel />
-      <SidePanel data-position="right" content={<RightContent />} />
-    </div>
+    <>
+      <TitleHeader />
+      <div className="container">
+        <SidePanel data-position="left" content={<LeftContent />} />
+        <GamePanel />
+        <SidePanel data-position="right" content={<RightContent />} />
+      </div>
+    </>
   );
 }
 

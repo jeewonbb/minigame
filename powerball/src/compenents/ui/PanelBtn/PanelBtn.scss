@@ -1,0 +1,25 @@
+@media screen and (max-width: 1099.9px) {
+  .btn-panel-slide {
+    position: absolute;
+    display: block;
+    background-color: #516e96;
+    width: 40px;
+    height: 50px;
+    top: 100px;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      content: "";
+      background-color: #d6d6d6;
+      mask: url(../../../assets/images/ic_arw.svg) no-repeat center center /
+        cover;
+      width: 20px;
+      height: 20px;
+      transition: 0.5s;
+    }
+  }
+}

@@ -41,19 +41,6 @@ export function LeftContent() {
       </section>
       <section>
         <TabContent3 />
-
-        <div className="bar-graph">
-          <div className="left-label">홀</div>
-          <div className="bar">
-            <strong className="left" style={{ width: "40%" }}>
-              40(<span>0.00%</span>)
-            </strong>
-            <strong className="right" style={{ width: "60%" }}>
-              60(<span>0.00%</span>)
-            </strong>
-          </div>
-          <div className="right-label">짝</div>
-        </div>
       </section>
 
       <footer>

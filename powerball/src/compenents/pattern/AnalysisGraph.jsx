@@ -99,7 +99,9 @@ export function AnalysisGraph(props) {
         <p>파워볼</p>
         {_total.slice(0, 2).map((row, rowIndex) => (
           <div key={rowIndex} className="bar-graph">
-            <div className="left-label">{rowIndex === 0 ? "홀" : "언"}</div>
+            <div className="left-label">
+              {rowIndex === 0 ? "홀" : "언"} <i className="pwb">P</i>
+            </div>
             <div className="bar">
               {row.map((item, index) => (
                 <span
@@ -111,7 +113,10 @@ export function AnalysisGraph(props) {
                 </span>
               ))}
             </div>
-            <div className="right-label">{rowIndex === 0 ? "짝" : "오"}</div>
+            <div className="right-label">
+              {rowIndex === 0 ? "짝" : "오"}
+              <i className="pwb">P</i>
+            </div>
           </div>
         ))}
       </div>
