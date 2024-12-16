@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TitleTab } from "../ui/TitleTab/TitleTab";
 import { TabContent4, TabContent5 } from "./TabContent";
 import { RoundResults } from "./RoundResults";
+import { MenuList } from "../ui/MenuList/MenuList";
 
 export function RightContent() {
   const [currentTab, setCurrentTab] = useState({ tab3: "GameResults" });
@@ -36,8 +37,9 @@ export function RightContent() {
           onTabClick={(selectedTab) => {
             handleTabClick("tab3", selectedTab);
           }}
-        />
+        ></TitleTab>
         {/* <RoundResults results={results} /> */}
+        <MenuList />
         {tabContents[currentTab.tab3] || <div>기본 내용</div>}
       </section>
     </div>

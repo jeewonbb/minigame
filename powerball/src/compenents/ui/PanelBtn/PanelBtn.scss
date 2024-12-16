@@ -1,5 +1,6 @@
-@media screen and (max-width: 1099.9px) {
-  .btn-panel-slide {
+.btn-panel-slide {
+  display: none;
+  @media screen and (max-width: 1099.9px) {
     position: absolute;
     display: block;
     background-color: #516e96;
@@ -12,6 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.1s;
     &::before {
       content: "";
       background-color: #d6d6d6;
@@ -19,7 +21,40 @@
         cover;
       width: 20px;
       height: 20px;
-      transition: 0.5s;
+      transition: 0.2s;
+    }
+
+    &[data-position="right"] {
+      right: 0;
+      @media screen and (max-width: 1099.9px) {
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        &.active {
+          right: 283px;
+
+          &::before {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    &[data-position="left"] {
+      left: 0;
+      @media screen and (max-width: 1099.9px) {
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+
+        &::before {
+          transform: rotate(180deg);
+        }
+        &.active {
+          left: 283px;
+
+          &::before {
+            transform: rotate(0deg);
+          }
+        }
+      }
     }
   }
 }

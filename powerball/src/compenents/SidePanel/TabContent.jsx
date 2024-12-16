@@ -1,22 +1,12 @@
 import { History } from "../pattern/History";
 import { Analysis } from "../pattern/Analysis";
 import { AnalysisBar } from "../pattern/AnalysisBar";
+import { AnalysisPattern } from "../pattern/AnalysisPattern";
+import { AnalysisPattern2 } from "../pattern/AnalysisPattern2";
 
-export const TabContent1 = () => {
-  return (
-    <>
-      <p>1111</p>
-    </>
-  );
-};
+export const TabContent1 = () => <AnalysisPattern />;
 
-export const TabContent2 = () => {
-  return (
-    <>
-      <p>22</p>
-    </>
-  );
-};
+export const TabContent2 = () => <AnalysisPattern2 />;
 
 export const TabContent3 = () => <AnalysisBar />;
 

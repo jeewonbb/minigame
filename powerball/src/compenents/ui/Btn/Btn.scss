@@ -1,0 +1,71 @@
+label {
+  cursor: pointer;
+
+  input {
+    &[type="checkbox"] {
+      appearance: none;
+      position: relative;
+      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2) inset;
+      background: #4b4b4b;
+      border-radius: 50px;
+      width: 95px;
+      height: 30px;
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 66px;
+        top: 3px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #cacaca;
+        transition: left 0.1s linear;
+        border: 3px solid #e3e3e3;
+        box-sizing: border-box;
+        transition: left 250ms linear;
+      }
+
+      &::after {
+        content: "off";
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 700;
+        color: #8f8f8f;
+        position: absolute;
+        left: 15px;
+        top: 6px;
+      }
+      &:checked {
+        background: #13bd0a;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2) inset;
+
+        &::before {
+          left: 3px;
+        }
+
+        &::after {
+          left: 52px;
+          content: "on";
+          color: #fff;
+        }
+      }
+    }
+
+    &[type="radio"] {
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      border: 5px solid #292929;
+      box-sizing: border-box;
+      border-radius: 50%;
+      outline: 2px solid #4b4b4b;
+      background: #4b4b4b;
+      cursor: pointer;
+      &:checked {
+        background: #13bd0a;
+        box-shadow: 0p;
+      }
+    }
+  }
+}

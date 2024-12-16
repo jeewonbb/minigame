@@ -59,16 +59,19 @@ body {
   font-size: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .container {
   display: flex;
   justify-content: center;
   height: 873px;
   position: relative;
+  font-family: "Pretendard-Regular !important";
+
+  p {
+    font-family: "Pretendard-Regular";
+  }
+  button {
+    cursor: pointer;
+  }
   @media screen and (max-width: 1099.9px) {
     width: 526px;
     overflow: hidden;
@@ -77,6 +80,7 @@ code {
 
 ::-webkit-scrollbar {
   width: 3px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {

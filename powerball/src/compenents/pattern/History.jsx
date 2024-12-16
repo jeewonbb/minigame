@@ -33,7 +33,7 @@ export function History() {
     } catch (error) {
       // console.error("데이터 요청 실패:", error);
     } finally {
-      console.log("데이터 요청 완료");
+      // console.log("데이터 요청 완료");
     }
   };
 

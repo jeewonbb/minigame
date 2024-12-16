@@ -1,5 +1,7 @@
 section.panel {
   width: 530px;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   border-radius: 20px;
   border: 6px solid transparent;
@@ -20,5 +22,174 @@ section.panel {
     border-radius: 20px;
     z-index: -1;
     background: #18202a;
+  }
+
+  .iframe-wrapper {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 45px;
+      background-color: rgba(11, 37, 72, 1);
+      filter: blur(5px);
+    }
+  }
+
+  .function_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 23px 15px;
+    > div:not(.betting_chip) {
+      display: flex;
+      gap: 35px;
+      .unit_btn {
+        cursor: pointer;
+        .icon {
+          i {
+            display: block;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 27px 27px;
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            &.cancel-betting {
+              background-image: url(../../assets/images/undo_ico.svg);
+            }
+            &.re-betting {
+              background-image: url(../../assets/images/re_bet_ico.svg);
+            }
+            &.bet_confirm {
+              background-image: url(../../assets/images/confirm_ico.svg);
+            }
+            &.game-setting {
+              background-image: url(../../assets/images/setting_ico.svg);
+            }
+          }
+        }
+        p {
+          font-size: 12px;
+          color: rgb(255, 255, 255, 0.6);
+          padding: 0.125rem 0;
+          text-wrap: nowrap;
+          transition: 0.3s;
+        }
+
+        &:hover {
+          p {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .betting_chip {
+      width: 200px;
+      margin: 0 auto;
+      padding: 10px 0;
+      position: relative;
+
+      .swiper-horizontal {
+        width: 155px;
+        padding: 10px 0;
+      }
+      .swiper-button-prev {
+        left: -5px;
+
+        &::after {
+          color: rgba(255, 255, 255, 0.8) !important;
+          font-size: 18px !important;
+        }
+      }
+
+      .swiper-button-next {
+        right: -5px;
+
+        &::after {
+          color: rgba(255, 255, 255, 0.8) !important;
+          font-size: 18px !important;
+        }
+      }
+      .swiper-button-next::after {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-size: 18px !important;
+      }
+
+      .swiper-slide {
+        transition: 0.3s;
+        transform: scale(0.9);
+        &.swiper-slide-active {
+          transform: scale(1.1);
+          .chip::after {
+            background-image: url(../../assets/images/chip-hover.png);
+            background-size: 57px 57px;
+            background-position: center center;
+          }
+        }
+      }
+      $chip-images: (
+        "chip_1": url(../../assets/images/betchip_01.png),
+        "chip_2": url(../../assets/images/betchip_02.png),
+        "chip_3": url(../../assets/images/betchip_03.png),
+        "chip_4": url(../../assets/images/betchip_04.png),
+        "chip_5": url(../../assets/images/betchip_05.png),
+        "chip_6": url(../../assets/images/betchip_06.png),
+      );
+
+      .chip {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 50px 50px;
+        width: 45px;
+        height: 45px;
+        color: #333;
+        font-size: 12px;
+        letter-spacing: -1px;
+        cursor: pointer;
+
+        &::after,
+        &::before {
+          position: absolute;
+          content: "";
+          left: 50%;
+          top: 50%;
+          width: 52px;
+          height: 52px;
+          background-size: 52px 52px;
+          transform: translate(-50%, -50%);
+        }
+
+        @each $name, $url in $chip-images {
+          &.#{$name}::before {
+            background-image: $url;
+          }
+        }
+
+        span {
+          font-family: "Pretendard-Black";
+          font-size: 12px;
+          font-weight: 900;
+          text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+          background: rgb(255, 255, 255);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          backdrop-filter: blur(2px);
+          padding: 1px 2px;
+          border-radius: 10px;
+        }
+      }
+    }
   }
 }

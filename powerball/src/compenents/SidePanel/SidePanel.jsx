@@ -1,9 +1,10 @@
 import "./SidePanel.scss";
-import { PanelBtn } from "../ui/PanelBtn/PanelBtn";
-export const SidePanel = ({ content, ...props }) => {
+export const SidePanel = ({ dataPosition, isActive, content, ...props }) => {
   return (
-    <aside className="panel" data-position={props["data-position"]}>
-      <PanelBtn />
+    <aside
+      data-position={props["data-position"]}
+      className={`panel ${isActive ? "active" : ""}`}
+    >
       {content}
     </aside>
   );

@@ -95,49 +95,69 @@ export function AnalysisGraph(props) {
 
   return (
     <>
-      <div>
-        <p>파워볼</p>
-        {_total.slice(0, 2).map((row, rowIndex) => (
-          <div key={rowIndex} className="bar-graph">
-            <div className="left-label">
-              {rowIndex === 0 ? "홀" : "언"} <i className="pwb">P</i>
+      <div className="bar-list">
+        <h6>파워볼</h6>
+        {_total.slice(0, 2).map((row, rowIndex) => {
+          const total = row.reduce((acc, val) => acc + val, 0);
+          return (
+            <div key={rowIndex} className="bar-graph">
+              <div className="left-label">
+                {rowIndex === 0 ? "홀" : "언"} <i className="pwb">P</i>
+              </div>
+              <div className="bar">
+                {row.map((item, index) => (
+                  <span
+                    key={index}
+                    className={index === 0 ? "left" : "right"}
+                    style={{
+                      width: ((item / total) * 100).toFixed(2) + "%",
+                    }}
+                  >
+                    <strong>{item}</strong> ({((item / total) * 100).toFixed(2)}
+                    %)
+                  </span>
+                ))}
+              </div>
+              <div className="right-label">
+                {rowIndex === 0 ? "짝" : "오"}
+                <i className="pwb">P</i>
+              </div>
             </div>
-            <div className="bar">
-              {row.map((item, index) => (
-                <span
-                  key={index}
-                  className={index === 0 ? "left" : "right"}
-                  style={{ width: item + "%" }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-            <div className="right-label">
-              {rowIndex === 0 ? "짝" : "오"}
-              <i className="pwb">P</i>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      <div>
-        <p>일반볼</p>
-        {_total.slice(2, 4).map((row, rowIndex) => (
-          <div key={rowIndex} className="bar-graph">
-            <div className="left-label">{rowIndex === 0 ? "홀" : "언"}</div>
-            <div className="bar">
-              {row.map((item, index) => (
-                <span key={index} className={index === 0 ? "left" : "right"}>
-                  {item}
-                </span>
-              ))}
+      <div className="bar-list">
+        <h6>일반볼</h6>
+        {_total.slice(2, 4).map((row, rowIndex) => {
+          const total = row.reduce((acc, val) => acc + val, 0);
+          return (
+            <div key={rowIndex} className="bar-graph">
+              <div className="left-label">{rowIndex === 0 ? "홀" : "언"}</div>
+              <div className="bar">
+                {row.map((item, index) => (
+                  <span
+                    key={index}
+                    className={index === 0 ? "left" : "right"}
+                    style={{
+                      width: ((item / total) * 100).toFixed(2) + "%",
+                    }}
+                  >
+                    <strong>{item}</strong> ({((item / total) * 100).toFixed(2)}
+                    %)
+                  </span>
+                ))}
+              </div>
+              <div className="right-label">{rowIndex === 0 ? "짝" : "오"}</div>
             </div>
-            <div className="right-label">{rowIndex === 0 ? "짝" : "오"}</div>
-          </div>
-        ))}
+          );
+        })}
+        {_percent.map((index) => {
+          <strong className="percent">{props.percent}</strong>;
+        })}
       </div>
-      <strong className="percent">{props.percent}</strong>
+
+      <p className="left-side-txt">※ 일일 데이터 통계/분포도 제공</p>
     </>
   );
 }

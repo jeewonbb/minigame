@@ -60,9 +60,5 @@ export function AnalysisBar() {
     }
   };
 
-  return (
-    <ul className="bar-list">
-      <AnalysisGraph list={graphList} />
-    </ul>
-  );
+  return <AnalysisGraph list={graphList} />;
 }

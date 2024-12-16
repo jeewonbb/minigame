@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel, FreeMode } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
 
+import "swiper/css";
+import "swiper/css/navigation";
 let start_flag = 1;
 let analysis_list1 = "";
 let analysis_list2 = "";
@@ -8,10 +14,7 @@ let analysis_list4 = "";
 let consecutive_arr = [];
 let break_arr = [];
 let fondant_arr = [];
-
 export function AnalysisData(props) {
-  const [startFlag, setStartFlag] = useState(true);
-
   // list = props.list;
   // console.log(list);
   const [analysisPatternlist1, setanalysisPatternlist1] = useState("");
@@ -23,49 +26,38 @@ export function AnalysisData(props) {
   const [analysisSize3, setaanalysisSize3] = useState(0);
   const [analysisSize4, setaanalysisSize4] = useState(0);
 
-  const [analysisData, setAnalysisData] = useState({
-    analysisPatternlist1: "",
-    analysisPatternlist2: "",
-    analysisPatternlist3: "",
-    analysisPatternlist4: "",
-    analysisSize1: 0,
-    analysisSize2: 0,
-    analysisSize3: 0,
-    analysisSize4: 0,
-  });
+  const [consecutive, setConsecutive] = useState([]);
+  const [breaking, setBreaking] = useState([]);
+  const [fondant, setFondant] = useState([]);
 
   useEffect(() => {
-    // if ( start_flag == 1 )
-    fn_analysis_grid(props);
+    // if ( start_flag === 1 )
+    fn_analysis_grid();
   }, [props]);
   const ptnKind = {
     ODD_EVEN: {
-      1: { type: "P", className: "odd", viewText: "odd_s" },
-      2: { type: "B", className: "even", viewText: "even_s" },
-      0: { type: "T", className: "draw", viewText: "draw_s" },
+      1: { type: "P", class: "odd", viewText: "odd_s" },
+      2: { type: "B", class: "even", viewText: "even_s" },
+      0: { type: "T", class: "draw", viewText: "draw_s" },
     },
     UNDER_OVER: {
-      1: { type: "P", className: "under", viewText: "under_s" },
-      2: { type: "B", className: "over", viewText: "over_s" },
-      0: { type: "T", className: "draw", viewText: "draw_s" },
+      1: { type: "P", class: "under", viewText: "under_s" },
+      2: { type: "B", class: "over", viewText: "over_s" },
+      0: { type: "T", class: "draw", viewText: "draw_s" },
     },
   };
 
-  let baseElm, blueElm, redElm;
-  let widthNum = 20;
   const viewTextType = "R";
   let list1 = [];
   let list2 = [];
   let list3 = [];
   let list4 = [];
   let mptnList = [];
-  let str = "";
 
-  const fn_analysis_grid = (props) => {
+  const fn_analysis_grid = () => {
     let list = props.list;
     start_flag = 0;
 
-    let _other_data_arr = [0, 0];
     var currentmark1 = 0;
     var currentmark2 = 0;
     var currentmark3 = 0;
@@ -113,17 +105,17 @@ export function AnalysisData(props) {
       list3[i].round = _round[0] + "-" + parseInt(_round[1]);
       list4[i].round = _round[0] + "-" + parseInt(_round[1]);
 
-      if (prev_index[0] !== list1[i].result.value) other_fall[0]++;
-      if (prev_index[1] !== list2[i].result.value) other_fall[1]++;
-      if (prev_index[2] !== list3[i].result.value) other_fall[2]++;
-      if (prev_index[3] !== list4[i].result.value) other_fall[3]++;
+      if (prev_index[0] != list1[i].result.value) other_fall[0]++;
+      if (prev_index[1] != list2[i].result.value) other_fall[1]++;
+      if (prev_index[2] != list3[i].result.value) other_fall[2]++;
+      if (prev_index[3] != list4[i].result.value) other_fall[3]++;
 
       prev_index[0] = list1[i].result.value;
       prev_index[1] = list2[i].result.value;
       prev_index[2] = list3[i].result.value;
       prev_index[3] = list4[i].result.value;
 
-      if (currentmark1 !== list1[i].result.value) {
+      if (currentmark1 != list1[i].result.value) {
         if (currentmax[0] > 0) {
           if (currentmax[0] === 1) {
             currentpongdang[0]++;
@@ -137,7 +129,7 @@ export function AnalysisData(props) {
         currentmark1 = list1[i].result.value;
         currentmax[0] = 0;
       }
-      if (currentmark2 !== list2[i].result.value) {
+      if (currentmark2 != list2[i].result.value) {
         if (currentmax[1] > 0) {
           if (currentmax[1] === 1) {
             currentpongdang[1]++;
@@ -151,7 +143,7 @@ export function AnalysisData(props) {
         currentmark2 = list2[i].result.value;
         currentmax[1] = 0;
       }
-      if (currentmark3 !== list3[i].result.value) {
+      if (currentmark3 != list3[i].result.value) {
         if (currentmax[2] > 0) {
           if (currentmax[2] === 1) {
             currentpongdang[2]++;
@@ -165,7 +157,7 @@ export function AnalysisData(props) {
         currentmark3 = list3[i].result.value;
         currentmax[2] = 0;
       }
-      if (currentmark4 !== list4[i].result.value) {
+      if (currentmark4 != list4[i].result.value) {
         if (currentmax[3] > 0) {
           if (currentmax[3] === 1) {
             currentpongdang[3]++;
@@ -195,6 +187,7 @@ export function AnalysisData(props) {
         other_maxi[3][currentmark4 - 1] = currentmax[3];
     }
 
+    consecutive_arr = [];
     consecutive_arr.push(other_maxi[0][0]);
     consecutive_arr.push(other_maxi[0][1]);
     consecutive_arr.push(other_maxi[1][0]);
@@ -211,6 +204,10 @@ export function AnalysisData(props) {
     fondant_arr.push(other_pong[1]);
     fondant_arr.push(other_pong[2]);
     fondant_arr.push(other_pong[3]);
+
+    setConsecutive(...[consecutive_arr]);
+    setBreaking(...[other_fall]);
+    setFondant(...[other_pong]);
 
     displayKindTab(1, "ODD_EVEN");
     displayKindTab(2, "UNDER_OVER");
@@ -263,7 +260,7 @@ export function AnalysisData(props) {
   }
 
   const calcSquidResultValue = function (opt, resValue, tie, tieValue) {
-    if (resValue.result.extraValue !== undefined)
+    if (resValue.result.extraValue != undefined)
       return resValue.result.extraValue;
     else return resValue.result.value;
   };
@@ -282,6 +279,8 @@ export function AnalysisData(props) {
     let xloc = 0;
     let yloc = 0;
     let rxloc = 0;
+    let prev_tie = false;
+    let tie_count = 0;
 
     dataList.forEach((element, idx) => {
       thisValue = fn_calc(opt, element, tieBool, tieValue);
@@ -290,41 +289,42 @@ export function AnalysisData(props) {
         thisValue = tieValue;
       }
 
-      if (tieBool || thisValue !== null) {
-        if (idx === 0) {
+      if (tieBool || thisValue != null) {
+        if (idx == 0) {
           locArray[0] = new Array();
           if (element.round.indexOf("value-") > -1) {
-            locArray[0][0] = [thisValue, element.round];
+            locArray[0][0] = [thisValue, element.round, 0];
           } else {
-            locArray[0][0] = [thisValue, element.round.split("-")[1]];
+            locArray[0][0] = [thisValue, element.round.split("-")[1], 0];
           }
           preValue = thisValue;
         } else {
           if (
-            preValue === thisValue ||
-            (tieBool && thisValue === tieValue) ||
-            preValue === tieValue
+            preValue == thisValue ||
+            (tieBool && thisValue == tieValue) ||
+            preValue == tieValue
           ) {
             if (
               yloc + 1 < maxLocValue &&
-              (locArray[rxloc][yloc + 1] === null ||
-                locArray[rxloc][yloc + 1] === "undefined")
+              (locArray[rxloc][yloc + 1] == null ||
+                locArray[rxloc][yloc + 1] == "undefined")
             ) {
-              if (
+              if (tieBool && thisValue == tieValue) {
+              } else if (
                 locArray[rxloc][yloc + 2] == undefined ||
-                (locArray[rxloc][yloc + 2][0] !== thisValue &&
-                  locArray[rxloc][yloc + 2][0] !== tieValue)
+                (locArray[rxloc][yloc + 2][0] != thisValue &&
+                  locArray[rxloc][yloc + 2][0] != tieValue)
               ) {
                 if (
                   (locArray[rxloc - 1] &&
                     locArray[rxloc - 1][yloc + 1] &&
-                    locArray[rxloc - 1][yloc + 1][0] === thisValue) ||
+                    locArray[rxloc - 1][yloc + 1][0] == thisValue) ||
                   (locArray[rxloc - 1] &&
                     locArray[rxloc - 1][yloc + 1] &&
-                    thisValue === tieValue) ||
+                    thisValue == tieValue) ||
                   (locArray[rxloc - 1] &&
                     locArray[rxloc - 1][yloc + 1] &&
-                    locArray[rxloc - 1][yloc + 1][0] === tieValue &&
+                    locArray[rxloc - 1][yloc + 1][0] == tieValue &&
                     rxloc > 1)
                 ) {
                   rxloc++;
@@ -337,40 +337,62 @@ export function AnalysisData(props) {
             } else {
               rxloc++;
             }
-          } else if (preValue !== thisValue) {
+
+            if (tieBool && thisValue == tieValue) {
+              prev_tie = true;
+              tie_count += 1;
+            } else {
+              prev_tie = false;
+              tie_count = 0;
+            }
+          } else if (preValue != thisValue) {
+            prev_tie = false;
+            tie_count = 0;
             xloc++;
             yloc = 0;
             rxloc = xloc;
           }
 
-          while (
-            (locArray[rxloc] && locArray[rxloc][yloc]) ||
-            (locArray[rxloc] &&
-              locArray[rxloc][yloc + 1] &&
-              locArray[rxloc][yloc + 1][0] === tieValue)
-          ) {
-            rxloc++;
+          if (!tieBool && thisValue != tieValue) {
+            while (
+              (locArray[rxloc] && locArray[rxloc][yloc]) ||
+              (locArray[rxloc] &&
+                locArray[rxloc][yloc + 1] &&
+                locArray[rxloc][yloc + 1][0] == tieValue)
+            ) {
+              rxloc++;
+            }
           }
+
           if (!locArray[rxloc]) {
             locArray[rxloc] = new Array();
           }
 
           if (element.round.indexOf("value-") > -1) {
-            locArray[rxloc][yloc] = [thisValue, element.round];
+            if (tieBool && thisValue == tieValue)
+              locArray[rxloc][yloc][2] = tie_count;
+            else locArray[rxloc][yloc] = [thisValue, element.round, tie_count];
           } else {
-            locArray[rxloc][yloc] = [thisValue, element.round.split("-")[1]];
+            if (tieBool && thisValue == tieValue)
+              locArray[rxloc][yloc][2] = tie_count;
+            else
+              locArray[rxloc][yloc] = [
+                thisValue,
+                element.round.split("-")[1],
+                tie_count,
+              ];
           }
         }
-        if (!tieBool || thisValue !== tieValue) {
+        if (!tieBool || thisValue != tieValue) {
           preValue = thisValue;
         }
       }
     });
-
+    console.log(locArray);
     return locArray;
   };
 
-  const drawLimitElement = function (
+  const drawLimitElement = async function (
     locArray,
     opt,
     drawObjId,
@@ -383,6 +405,57 @@ export function AnalysisData(props) {
     let substr = "";
     let str = "";
     let viewText = "";
+
+    locArray.forEach((element, index, arr) => {
+      str += "<dl>";
+
+      for (let idx = 0; idx < 6; idx++) {
+        if (element[idx] != undefined) {
+          className = ptnKind[opt][element[idx][0]]["class"];
+          if (prediction && element[idx][1].indexOf("value-") > -1) {
+            viewText = getViewText(
+              opt,
+              viewTextType,
+              element[idx][1].replace("value-", ""),
+              element[idx][0]
+            );
+          } else {
+            viewText = getViewText(
+              opt,
+              viewTextType,
+              element[idx][1],
+              element[idx][0]
+            );
+          }
+
+          if (prediction && element[idx][1].indexOf("value-") > -1) {
+            str +=
+              '<dd><span class="' +
+              className +
+              ' blink">' +
+              viewText +
+              "</span></dd>";
+          } else {
+            if (combineFunction != null && combineFunction != undefined) {
+            }
+
+            str +=
+              '<dd><span class="' +
+              className +
+              '">' +
+              viewText +
+              substr +
+              "</span></dd>";
+          }
+
+          lesListIdx++;
+        } else {
+          str += "<dd><span></span></dd>";
+        }
+      }
+
+      str += "</dl>";
+    });
 
     if (drawObjId === "analysis_list1") {
       setanalysisPatternlist1(str);
@@ -417,34 +490,99 @@ export function AnalysisData(props) {
     }
     return viewText;
   };
-
   // fn_analysis_grid();
   return (
     <>
-      <div>
-        상단데이타 : {consecutive_arr[0]} {consecutive_arr[1]}{" "}
-        {consecutive_arr[2]} {consecutive_arr[3]} {consecutive_arr[4]}{" "}
-        {consecutive_arr[5]} {consecutive_arr[6]} {consecutive_arr[7]}
-        <br />
-        {break_arr[0]} {break_arr[1]} {break_arr[2]} {break_arr[3]}
-        <br />
-        {fondant_arr[0]} {fondant_arr[1]} {fondant_arr[2]} {fondant_arr[3]}
+      <div className="graph-wrap">
+        <h6>파워볼 홀/짝</h6>
+        <div className="graph-header">
+          <div className="left">
+            <p>
+              <span className="badge odd">홀</span>
+              <span>
+                <strong>0</strong>
+                <small>(%)</small>
+                <small>{consecutive[0]}연속</small>
+              </span>
+            </p>
+            <p>
+              <span className="badge even">짝</span>
+              <span>
+                <strong>0</strong>
+                <small>(%)</small>
+                <small>{consecutive[1]}연속</small>
+              </span>
+            </p>
+          </div>
+          <div className="right">
+            <p>
+              <span className="badge breaking">꺽음</span>
+              <small>{breaking[0]}번</small>
+            </p>
+            <p>
+              <span className="badge fondant">퐁당</span>
+              <small>{fondant[0]}번</small>
+            </p>
+          </div>
+        </div>
+
+        {/* <Swiper spaceBetween={0} slidesPerView="auto" freeMode={true}>
+          <SwiperSlide className="graph-inner">
+            <div
+              className="graph-box"
+              style={{ width: analysisSize1 * 20 + "px" }}
+              dangerouslySetInnerHTML={{ __html: analysis_list1 }}
+            ></div>
+          </SwiperSlide>
+        </Swiper> */}
+
+        <div className="graph-inner">
+          <div
+            className="graph-box"
+            style={{ width: analysisSize1 * 20 + "px" }}
+            dangerouslySetInnerHTML={{ __html: analysis_list1 }}
+          ></div>
+        </div>
       </div>
-      <div>
-        1번 : 사이즈 {analysisSize1}
-        {analysis_list1}
-      </div>
-      <div>
-        2번 : 사이즈 {analysisSize2}
-        {analysis_list2}
-      </div>
-      <div>
-        3번 : 사이즈 {analysisSize3}
-        {analysis_list3}
-      </div>
-      <div>
-        4번 : 사이즈 {analysisSize4}
-        {analysis_list4}
+      <div className="graph-wrap">
+        <h6> 파워볼 언더/오버</h6>
+        <div className="graph-header">
+          <div className="left">
+            <p>
+              <span className="badge odd">홀</span>
+              <span>
+                <strong>0</strong>
+                <small>(%)</small>
+                <small>{consecutive[2]}연속</small>
+              </span>
+            </p>
+            <p>
+              <span className="badge even">짝</span>
+              <span>
+                <strong>0</strong>
+                <small>(%)</small>
+                <small>{consecutive[3]}연속</small>
+              </span>
+            </p>
+          </div>
+          <div className="right">
+            <p>
+              <span className="badge breaking">꺽음</span>
+              <small>{breaking[1]}번</small>
+            </p>
+            <p>
+              <span className="badge fondant">퐁당</span>
+              <small>{fondant[1]}번</small>
+            </p>
+          </div>
+        </div>
+        <div className="graph-inner">
+          <div
+            className="graph-box"
+            style={{ width: analysisSize2 * 20 + "px" }}
+            dangerouslySetInnerHTML={{ __html: analysisPatternlist2 }}
+          ></div>
+        </div>
       </div>
     </>
   );

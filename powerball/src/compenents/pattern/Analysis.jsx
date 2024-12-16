@@ -64,8 +64,8 @@ export function Analysis() {
 
   return (
     <ul className="bet-list">
-      {/* <AnalysisGraph list={graphList} />
-      <AnalysisData list={patternList} /> */}
+      {/*<AnalysisGraph list={graphList} />*/
+      /*<AnalysisData list={patternList} />*/}
       {list.map((item, index) => (
         <AnalysisList
           key={index}
