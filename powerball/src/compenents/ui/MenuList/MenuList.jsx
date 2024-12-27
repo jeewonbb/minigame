@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { InputRadio, InputSwitch } from "../Btn/Btn";
+// import * as Lang from "../../../js/lang";
+
 import "./MenuList.scss";
 export const MenuList = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("option1");
   const [switchStates, setSwitchStates] = useState({
     switch1: false,
     switch2: false,
     switch3: false,
   });
+  const [isActive, setIsActive] = useState(false);
 
   const handleChange = (e) => {
     setSelectedValue(e.target.value);
@@ -20,15 +23,66 @@ export const MenuList = () => {
     });
   };
 
+  const handleActive = () => {
+    setIsActive((prev) => !prev);
+  };
+
+  const stopPropagation = (event) => {
+    event.stopPropagation();
+  };
+
   return (
-    <div className="drop_set_box">
-      <div className="inner">
+    <div
+      className={`drop-set-box ${isActive ? "active" : ""}`}
+      onClick={handleActive}
+    >
+      <button
+        type="button"
+        className={`menu-btn ${isActive ? "open" : ""}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleActive();
+        }}
+      ></button>
+      <div className="inner" onClick={stopPropagation}>
         <ul>
           <li>
-            <button className="ic-manual">매뉴얼</button>
+            <button type="button" className="ic-manual">
+              매뉴얼
+            </button>
           </li>
           <li>
-            <button className="ic-stats">통계</button>
+            <button type="button" className="ic-stats">
+              통계
+            </button>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p className="ic-bgm">
+              {Lang.getLang("general", "sound_1", props.lang)}
+            </p>
+            <label className={soundBgm ? " switch-checked" : ""}>
+              <input
+                role="switch"
+                type="checkbox"
+                defaultChecked={soundBgm}
+                onChange={fn_bgm_turn}
+              />
+            </label>
+          </li>
+          <li>
+            <p className="ic-effect">
+              {Lang.getLang("general", "sound_2", props.lang)}
+            </p>
+            <label className={soundEffect ? " switch-checked" : ""}>
+              <input
+                role="switch"
+                type="checkbox"
+                defaultChecked={soundEffect}
+                onChange={fn_effect_turn}
+              />
+            </label>
           </li>
         </ul>
         <ul>

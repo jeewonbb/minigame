@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import * as Sound from "../../sound/sound.js";
+import * as Sound from "../../js/sound.js";
 import * as Function from "../../function.js";
 import "./Bet.scss";
 let betlist_complete = [];
@@ -86,7 +86,6 @@ function Bet(props) {
   betlimits = props.betlimits;
   betlimit_max = props.betlimit_max;
   betlimit_min = props.betlimit_min;
-  console.log(props);
   const [rebet, setRebet] = useState(false);
   const [betCancel, setBetCancel] = useState(false);
   const [betComplete, setBetComplete] = useState(false);
@@ -213,7 +212,6 @@ function Bet(props) {
       let min = parseInt(_time_gab / 60);
       let sec = parseInt(_time_gab - min * 60);
       console.log(min + ":" + sec);
-    } else {
     }
   };
 
@@ -809,24 +807,12 @@ function Bet(props) {
     }
     return `${value}원`;
   };
-  const handleClick = (index) => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.slideTo(index, 300, true);
-    }
-  };
 
-  const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.slideNext();
-    }
+  const handleChipClick = (array, index) => {
+    setActiveIndex(index);
+    fn_chip_choice(array);
   };
 
   return (
@@ -1004,7 +990,7 @@ function Bet(props) {
           </div>
         </div>
       </div>
-      <div className="function_bar">
+      {/* <div className="function_bar">
         <div className="f_left">
           <div
             className={"unit_btn" + (betCancel ? "" : " disabled")}
@@ -1036,7 +1022,6 @@ function Bet(props) {
               </div>
             ))}
           </div>
-          {/* 기본 칩 :{betchip} */}
         </div>
 
         <div className="f_right">
@@ -1053,12 +1038,46 @@ function Bet(props) {
             </div>
             <p>베팅확인</p>
           </div>
-          <div className="unit_btn gnb-show">
-            <div className="icon">
-              <i className="game-setting"></i>
+        </div>
+      </div> */}
+
+      <div className="function-bar">
+        <div className="betting-chip">
+          {props.betslips.map((array, index) => (
+            <div
+              className={`chip chip_${index + 1} ${
+                activeIndex === index ? "active" : ""
+              }`}
+              onClick={() => handleChipClick(array, index)}
+            >
+              <span>{formatCurrency(array)}</span>
             </div>
-            <p>더보기</p>
-          </div>
+          ))}
+        </div>
+        {/* {betchip} */}
+        <div className="btn-bar">
+          <button
+            type="button"
+            className={"unit_btn" + (betCancel ? "" : " disabled")}
+            onClick={fn_bet_cancel}
+          >
+            실행취소
+          </button>
+          <button
+            type="button"
+            className={`betComplete ? "" : " disabled") +
+              (betCompleteActive ? " active" : ""`}
+            onClick={fn_bet_complete}
+          >
+            Place Bet
+          </button>
+          <button
+            type="button"
+            className={"unit_btn" + (rebet ? "" : " disabled")}
+            onClick={fn_rebet}
+          >
+            재베팅
+          </button>
         </div>
       </div>
 

@@ -1,0 +1,199 @@
+<details>
+    <summary>게임 소개</summary>
+    <div class="description">
+        <p>32 Cards는 6부터 13(킹)까지의 값을 가진 32장의 카드덱으로 플레이 됩니다.</p>
+        <p>32 Cards는 플레이어 8, 플레이어 9, 플레이어 10, 플레이어 11와 각 핸드카드의 합계 중 가장 높은 top
+            카드에 베팅하는 게임입니다.</p>
+        <div class="table-responsive text-center">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>플레이어 8</th>
+                        <th>플레이어 9</th>
+                        <th>플레이어 10</th>
+                        <th>플레이어 11</th>
+                    </tr>
+                    <tr>
+                        <td>8점</td>
+                        <td>9점</td>
+                        <td>10점</td>
+                        <td>11점</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>각 플레이어에게 1장의 카드를 딜링됩니다. 딜링 된 카드 점수와 각 플레이어의 점수의 합계 중 가장 높은 top카드로 승자가
+            결정됩니다.</p>
+        <p>승리한 플레이어가 타이인 경우 타이인 플레이어에게만 카드가 1장 더 딜링 되어 승자가 결정됩니다.</p>
+        <p>게임은 1분 마다 진행됩니다.</p>
+    </div>
+</details>
+<details>
+    <summary>게임 방법</summary>
+    <div class="description">
+        <p>게임이 시작되면 베팅 시간 내에 원하는 베팅을 선택합니다.</p>
+        <p>베팅 구역을 클릭할 때마다 선택한 금액만큼 베팅금액이 증가합니다.</p>
+        <p>베팅이 끝나면 반드시 '베팅확인' 버튼을 눌러 베팅을 확정해야 합니다.</p>
+        <p>베팅 확정 후에는 취소가 불가능합니다.</p>
+        <p>배팅은 다음과 같습니다: </p>
+        <figure class="column">
+            <img src="./assets/images/manual-card.png" height="auto" />
+            <figcaption>• 8, 9, 10, 11 : 각 베팅의 숫자는 기본 점수가 됩니다.</figcaption>
+        </figure>
+        <p>베팅이 종료되면 8부터 카드를 한 장씩 받습니다.</p>
+        <p>각 베팅의 숫자와 받은 카드의 숫자를 합한 점수 중 가장 높은 Top카드가 승리합니다. <br />
+            (예시: 베팅 구역 8 + 카드 6♠= 14점)</p>
+        <p>Top카드가 2명 이상인 경우 해당 플레이어들만 카드를 한 장씩 추가로 받아 승패를 결정합니다. 재오픈후에도 Top카드가
+            같을 경우 해당 플레이어들의 베팅금은 반환됩니다.</p>
+        <p>게임 결과는 실시간 화면과 회차 결과에서 확인할 수 있습니다.</p>
+        <p>당첨금은 자동으로 계산되어 베팅 내역에 표시됩니다.</p>
+        <p>현재 라운드가 종료되면 곧바로 다음 라운드 베팅이 시작됩니다.</p>
+    </div>
+</details>
+<details>
+    <summary>베팅 구역과 32장의 카드 점수</summary>
+    <div class="description">
+        <ul>
+            <li>
+                <p>각 베팅 구역 점수</p>
+                <div class="table-responsive text-center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>베팅</th>
+                                <th>점수</th>
+                            </tr>
+                            <tr>
+                                <td>베팅 8</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>베팅 9</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>베팅 10</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>베팅 11</td>
+                                <td>11</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+
+            <li>
+                <p></p>
+                <p>32장의 카드 덱과 점수</p>
+                <p>각 카드의 무늬(하트, 스페이드, 클로버, 다이아몬드)는 관련이 없습니다.</p>
+                <div class="table-responsive text-center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>카드</th>
+                                <th>점수</th>
+                            </tr>
+                            <tr>
+                                <td>6♠ 6<span class="c-red">◆</span> 6<span class="c-red">♥</span> 6♣</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>7♠ 7<span class="c-red">◆</span> 7<span class="c-red">♥</span> 7♣</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>8♠ 8<span class="c-red">◆</span> 8<span class="c-red">♥</span> 8♣</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>9♠ 9<span class="c-red">◆</span> 9<span class="c-red">♥</span> 9♣</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>10♠ 10<span class="c-red">◆</span> 10<span class="c-red">♥</span> 10♣</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>J♠ J<span class="c-red">◆</span> J<span class="c-red">♥</span> J♣</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>Q♠ Q<span class="c-red">◆</span> Q<span class="c-red">♥</span> Q♣</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>K♠ K<span class="c-red">◆</span> K<span class="c-red">♥</span> K♣</td>
+                                <td>13</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+</details>
+<details>
+    <summary>지급금</summary>
+    <div class="description">
+        <p>매뉴얼에 명시된 지급금은 예시로, 베팅에 따른 실제 지급금과 차이가 있을 수 있습니다.</p>
+        <div class="table-responsive text-center">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>플레이어</th>
+                        <th>지급률</th>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td id="g_1_1"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td id="g_2_1"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td id="g_3_1"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td id="g_4_1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</details>
+<details>
+    <summary>게임 정책</summary>
+    <div class="description">
+        <p>모든 게임의 베팅을 올바르게 진행할 책임은 본인에게 있습니다.</p>
+        <p>다음 상황에 베팅이 거절될 수 있습니다.</p>
+        <ul>
+            <li>
+                <p>베팅을 제 시간에 하지 않아 베팅이 끝난 경우</p>
+            </li>
+            <li>
+                <p>최소 또는 최대 베팅 금액을 충족하지 못한 경우</p>
+            </li>
+            <li>
+                <p>기타 처리 문제로 인하여 베팅을 하지 못한 경우</p>
+            </li>
+        </ul>
+        <p></p>
+        <h6>게임 문제</h6>
+        <p>
+            게임에서 장애가 발생하면 해당 라운드는 일시적으로 중단됩니다. 지원 서비스가 장애를 즉시 제거할 수 있는 경우, 일시
+            중단된 라운드는 재개되어 정상적으로 진행됩니다. 장애를 제거할 수 없는 경우, 해당 라운드의 모든 베팅은 취소되고
+            플레이어에게 반환됩니다.
+        </p>
+        <p></p>
+        <h6>연결 문제</h6>
+        <p>
+            플레이어가 연결 문제로 인해 게임 연결이 끊긴 경우, 확정한 베팅은 유효한 것으로 간주되며 플레이어의 참여 없이 추첨
+            됩니다. 연결이 복구된 후 ‘베팅 내역’ 에서 라운드 결과를 확인할 수 있습니다.
+        </p>
+    </div>
+</details>

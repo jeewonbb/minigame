@@ -39,16 +39,16 @@ section.panel {
     }
   }
 
-  .function_bar {
+  .function-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 23px 15px;
-    > div:not(.betting_chip) {
+    flex-direction: column;
+    > div:not(.betting-chip) {
       display: flex;
-      gap: 35px;
       .unit_btn {
         cursor: pointer;
+        max-width: 126px;
         .icon {
           i {
             display: block;
@@ -87,50 +87,15 @@ section.panel {
         }
       }
     }
-    .betting_chip {
-      width: 200px;
+    .betting-chip {
+      width: 100%;
+      column-gap: 10px;
       margin: 0 auto;
       padding: 10px 0;
       position: relative;
+      display: flex;
+      justify-content: center;
 
-      .swiper-horizontal {
-        width: 155px;
-        padding: 10px 0;
-      }
-      .swiper-button-prev {
-        left: -5px;
-
-        &::after {
-          color: rgba(255, 255, 255, 0.8) !important;
-          font-size: 18px !important;
-        }
-      }
-
-      .swiper-button-next {
-        right: -5px;
-
-        &::after {
-          color: rgba(255, 255, 255, 0.8) !important;
-          font-size: 18px !important;
-        }
-      }
-      .swiper-button-next::after {
-        color: rgba(255, 255, 255, 0.8) !important;
-        font-size: 18px !important;
-      }
-
-      .swiper-slide {
-        transition: 0.3s;
-        transform: scale(0.9);
-        &.swiper-slide-active {
-          transform: scale(1.1);
-          .chip::after {
-            background-image: url(../../assets/images/chip-hover.png);
-            background-size: 57px 57px;
-            background-position: center center;
-          }
-        }
-      }
       $chip-images: (
         "chip_1": url(../../assets/images/betchip_01.png),
         "chip_2": url(../../assets/images/betchip_02.png),
@@ -165,6 +130,13 @@ section.panel {
           height: 52px;
           background-size: 52px 52px;
           transform: translate(-50%, -50%);
+          transition: all 0.2s;
+        }
+
+        &.active::after {
+          background-image: url(../../assets/images/chip-hover.png);
+          background-size: 57px 57px;
+          background-position: center center;
         }
 
         @each $name, $url in $chip-images {
@@ -174,7 +146,7 @@ section.panel {
         }
 
         span {
-          font-family: "Pretendard-Black";
+          font-family: "Pretendard-Regular";
           font-size: 12px;
           font-weight: 900;
           text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
@@ -189,6 +161,28 @@ section.panel {
           padding: 1px 2px;
           border-radius: 10px;
         }
+      }
+    }
+
+    .btn-bar {
+      width: calc(100% + 20px);
+      display: flex;
+      gap: 8px;
+      button {
+        flex: 1 1;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        height: 45px;
+        color: #fff;
+        border-radius: 8px;
+        background: linear-gradient(180deg, #514f4f 0%, #1e1d1d 100%);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5),
+          0px 2px 2px 0px #ffb31f inset;
+        font-family: "Pretendard-Regular";
       }
     }
   }

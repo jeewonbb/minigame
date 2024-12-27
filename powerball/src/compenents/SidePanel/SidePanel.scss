@@ -30,6 +30,10 @@ aside.panel {
         z-index: 3;
       }
     }
+
+    header.title-menu {
+      width: calc(100% - 55px);
+    }
   }
 
   .inner {

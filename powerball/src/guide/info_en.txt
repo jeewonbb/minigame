@@ -1,0 +1,198 @@
+<details>
+    <summary>Game Introduction</summary>
+    <div class="description">
+        <p>32 Cards is played with a deck of 32 cards with values between 6 and King (13).</p>
+        <p>32 Cards is a game where you bet on the highest top card of Player 8, Player 9, Player 10, Player 11, and the
+            sum of the cards in each hand.</p>
+        <div class="table-responsive text-center">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Player 8</th>
+                        <th>Player 9</th>
+                        <th>Player 10</th>
+                        <th>Player 11</th>
+                    </tr>
+                    <tr>
+                        <td>8 Points</td>
+                        <td>9 Points</td>
+                        <td>10 Points</td>
+                        <td>11 Points</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>One card is dealt to each player. The winner is determined by the highest TOP card, which is the sum of the
+            dealt card points and each player's points.</p>
+        <p>If the winning players are tied, only the tied player is dealt one more card to determine the winner.</p>
+        <p>The game is played every minute.</p>
+    </div>
+</details>
+<details>
+    <summary>How To Play</summary>
+    <div class="description">
+        <p>When the game starts, select your betting amount within the betting time.</p>
+        <p>The bet will increase by the selected amount each time you click on the betting area.</p>
+        <p>At the end of the betting time, make sure to confirm your bet by pressing the '<b>Confirm Bet</b>' button.
+        </p>
+        <p>Once a bet is confirmed, it cannot be canceled.</p>
+        <p>The bets are as follows: </p>
+        <figure class="column">
+            <img src="./assets/images/manual-card.png" height="auto" />
+            <figcaption>• 8, 9, 10, 11: The number of each bet is the base points.</figcaption>
+        </figure>
+        <p>When the betting ends, you are dealt cards starting at 8.</p>
+        <p>The Top card wins, which is the highest sum of the numbers on each bet and the numbers on the cards dealt.
+            <br />(Example: Betting 8 + card 6♠ = 14 points)
+        </p>
+        <p>If there is more than one Top card, only those players receive one additional card to determine the winner.
+            If the Top Card remains the same after the reopening, those players' bets will be returned.</p>
+        <p>The game results can be seen on the live screen and in the round results.</p>
+        <p>Winnings are automatically calculated and displayed in your Bet History.</p>
+        <p>Betting on the next round starts immediately after the current round ends.</p>
+    </div>
+</details>
+<details>
+    <summary>Betting and 32-card points</summary>
+    <div class="description">
+        <ul>
+            <li>
+                <p>The Point for each betting</p>
+                <div class="table-responsive text-center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Bets</th>
+                                <th>Point</th>
+                            </tr>
+                            <tr>
+                                <td>Betting 8</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>Betting 9</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>Betting 10</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Betting 11</td>
+                                <td>11</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+
+            <li>
+                <p></p>
+                <p>The 32-card deck and point</p>
+                <p>The suit of each card (hearts, spades, clovers, diamonds) is irrelevant.</p>
+                <div class="table-responsive text-center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Card</th>
+                                <th>Point</th>
+                            </tr>
+                            <tr>
+                                <td>6♠ 6<span class="c-red">◆</span> 6<span class="c-red">♥</span> 6♣</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>7♠ 7<span class="c-red">◆</span> 7<span class="c-red">♥</span> 7♣</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>8♠ 8<span class="c-red">◆</span> 8<span class="c-red">♥</span> 8♣</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>9♠ 9<span class="c-red">◆</span> 9<span class="c-red">♥</span> 9♣</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>10♠ 10<span class="c-red">◆</span> 10<span class="c-red">♥</span> 10♣</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>J♠ J<span class="c-red">◆</span> J<span class="c-red">♥</span> J♣</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>Q♠ Q<span class="c-red">◆</span> Q<span class="c-red">♥</span> Q♣</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>K♠ K<span class="c-red">◆</span> K<span class="c-red">♥</span> K♣</td>
+                                <td>13</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+</details>
+<details>
+    <summary>Payout</summary>
+    <div class="description">
+        <p>The payouts stated in the manual are examples and may differ from the actual payouts based on your bets.</p>
+        <div class="table-responsive text-center">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Bet</th>
+                        <th>Payout</th>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td id="g_1_1"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td id="g_2_1"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td id="g_3_1"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td id="g_4_1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</details>
+<details>
+    <summary>Game Policy</summary>
+    <div class="description">
+        <p>It's important to make sure that your bets are placed correctly.</p>
+        <p>Bets may be rejected in the following circumstances.</p>
+        <ul>
+            <li>
+                <p>If you do not place your bet in a timely manner.</p>
+            </li>
+            <li>
+                <p>If the minimum or maximum bet amount is not met.</p>
+            </li>
+            <li>
+                <p>Other processing issues prevent you from placing your bet.</p>
+            </li>
+        </ul>
+        <p></p>
+        <h6>Game Problems</h6>
+        <p>When an issue occurs in a game, the round is suspended. If the Support Service is able to remove the obstacle
+            immediately, the suspended round will resume and proceed as normal. If the failure cannot be removed, all
+            bets for that round will be cancelled and returned to the player.</p>
+        <p></p>
+        <h6>Connection Problems</h6>
+        <p>If a player is disconnected from the game due to a connection issue, confirmed bets are considered valid and
+            will be drawn without the player's participation. After the connection is restored, the round results can be
+            viewed in ‘Bet History.</p>
+    </div>
+</details>
